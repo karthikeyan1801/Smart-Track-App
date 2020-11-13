@@ -1,0 +1,154 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:comp="sap.ui.comp.variants" xmlns:core="sap.ui.core">
+	<Dialog class="sapUiPopupWithPadding" id="FilterDialog" contentWidth="30%" contentHeight="40%">
+		<customHeader>
+			<Bar>
+				<contentMiddle>
+					<Text text="{i18n>FILTER_CATEGORY_TITLE}"/>
+				</contentMiddle>
+				<contentRight>
+					<Button icon="sap-icon://refresh" press="onFilterCategoryRefresh" tooltip="{i18n>FILTER_REFRESH_TOOLTIP}"/>
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<subHeader>
+			<Bar>
+				<contentLeft>
+					<comp:VariantManagement select="onVariantSelect" save="onVariantSave" enabled="true" manage="onVariantManage" showExecuteOnSelection="false"
+						showShare="false" id="filterVariantManagement"/>
+				</contentLeft>
+			</Bar>
+		</subHeader>
+		<content>
+			<List id="FilterCategoryList">
+				<items>
+					<StandardListItem title="{/#FreightOrderCarrierFilter/Identifier/@sap:label}" tooltip="{/#FreightOrderCarrierFilter/Identifier/@sap:label}"
+						type="Navigation" press="onFilterCategoryPress">
+						<customData>
+							<core:CustomData key="id" value="{/#FreightOrderCarrierFilter/Identifier/@sap:emSelectionFieldProperty}"/>
+							<core:CustomData key="collection" value="FreightOrderCarrierFilterS"/>
+							<core:CustomData key="single" value="false"/>
+						</customData>
+					</StandardListItem>
+					<StandardListItem title="{/#FreightOrderRegNumberFilter/Identifier/@sap:label}" tooltip="{/#FreightOrderRegNumberFilter/Identifier/@sap:label}"
+						type="Navigation" press="onFilterCategoryPress">
+						<customData>
+							<core:CustomData key="id" value="{/#FreightOrderRegNumberFilter/Identifier/@sap:emSelectionFieldProperty}"/>
+							<core:CustomData key="collection" value="FreightOrderRegNumberFilterS"/>
+							<core:CustomData key="single" value="false"/>
+						</customData>
+					</StandardListItem>
+					<StandardListItem title="{/#FreightOrderDeliveryStatusFilter/Identifier/@sap:label}"
+						tooltip="{/#FreightOrderDeliveryStatusFilter/Identifier/@sap:label}" type="Navigation" press="onFilterCategoryPress">
+						<customData>
+							<core:CustomData key="id" value="{/#FreightOrderDeliveryStatusFilter/Identifier/@sap:emSelectionFieldProperty}"/>
+							<core:CustomData key="collection" value="FreightOrderDeliveryStatusFilterS"/>
+							<core:CustomData key="single" value="false"/>
+						</customData>
+					</StandardListItem>
+					<StandardListItem title="{/#FreightOrderTransportModeFilter/Identifier/@sap:label}"
+						tooltip="{/#FreightOrderTransportModeFilter/Identifier/@sap:label}" type="Navigation" press="onFilterCategoryPress">
+						<customData>
+							<core:CustomData key="id" value="{/#FreightOrderTransportModeFilter/Identifier/@sap:emSelectionFieldProperty}"/>
+							<core:CustomData key="collection" value="FreightOrderTransportModeFilterS"/>
+							<core:CustomData key="single" value="false"/>
+						</customData>
+					</StandardListItem>
+					<StandardListItem title="{/#FreightOrderTransportPhaseFilter/Identifier/@sap:label}"
+						tooltip="{/#FreightOrderTransportPhaseFilter/Identifier/@sap:label}" type="Navigation" press="onFilterCategoryPress">
+						<customData>
+							<core:CustomData key="id" value="{/#FreightOrderTransportPhaseFilter/Identifier/@sap:emSelectionFieldProperty}"/>
+							<core:CustomData key="collection" value="FreightOrderTransportPhaseFilterS"/>
+							<core:CustomData key="single" value="false"/>
+						</customData>
+					</StandardListItem>
+					<StandardListItem title="{/#FreightOrderTransportStatusFlt/Identifier/@sap:label}"
+						tooltip="{/#FreightOrderTransportStatusFlt/Identifier/@sap:label}" type="Navigation" press="onFilterCategoryPress">
+						<customData>
+							<core:CustomData key="id" value="{/#FreightOrderTransportStatusFlt/Identifier/@sap:emSelectionFieldProperty}"/>
+							<core:CustomData key="collection" value="FreightOrderTransportStatusFltS"/>
+							<core:CustomData key="single" value="false"/>
+						</customData>
+					</StandardListItem>
+					<StandardListItem title="{/#FreightOrderEventDateTimeFilter/Identifier/@sap:label}"
+						tooltip="{/#FreightOrderEventDateTimeFilter/Identifier/@sap:label}" type="Navigation" press="onFilterCategoryPress">
+						<customData>
+							<core:CustomData key="id" value="{/#FreightOrderEventDateTimeFilter/Identifier/@sap:emSelectionFieldProperty}"/>
+							<core:CustomData key="collection" value="FreightOrderEventDateTimeFilterS"/>
+							<core:CustomData key="single" value="false"/>
+						</customData>
+					</StandardListItem>
+					<StandardListItem title="{/#FreightOrderEventLocationFilter/Identifier/@sap:label}"
+						tooltip="{/#FreightOrderEventLocationFilter/Identifier/@sap:label}" type="Navigation" press="onFilterCategoryPress">
+						<customData>
+							<core:CustomData key="id" value="{/#FreightOrderEventLocationFilter/Identifier/@sap:emSelectionFieldProperty}"/>
+							<core:CustomData key="collection" value="FreightOrderEventLocationFilterS"/>
+							<core:CustomData key="single" value="true"/>
+						</customData>
+					</StandardListItem>
+					<StandardListItem title="{/#FreightOrderEventStatusFilter/Identifier/@sap:label}"
+						tooltip="{/#FreightOrderEventStatusFilter/Identifier/@sap:label}" type="Navigation" press="onFilterCategoryPress">
+						<customData>
+							<core:CustomData key="id" value="{/#FreightOrderEventStatusFilter/Identifier/@sap:emSelectionFieldProperty}"/>
+							<core:CustomData key="collection" value="FreightOrderEventStatusFilterS"/>
+							<core:CustomData key="single" value="true"/>
+						</customData>
+					</StandardListItem>
+					<StandardListItem title="{/#FreightOrderShippingTypeFilter/Identifier/@sap:label}"
+						tooltip="{/#FreightOrderShippingTypeFilter/Identifier/@sap:label}" type="Navigation" press="onFilterCategoryPress">
+						<customData>
+							<core:CustomData key="id" value="{/#FreightOrderShippingTypeFilter/Identifier/@sap:emSelectionFieldProperty}"/>
+							<core:CustomData key="collection" value="FreightOrderShippingTypeFilterS"/>
+							<core:CustomData key="single" value="true"/>
+						</customData>
+					</StandardListItem>
+					<StandardListItem title="{/#FreightOrderSourceLocCityFilter/Identifier/@sap:label}"
+						tooltip="{/#FreightOrderSourceLocCityFilter/Identifier/@sap:label}" type="Navigation" press="onFilterCategoryPress">
+						<customData>
+							<core:CustomData key="id" value="{/#FreightOrderSourceLocCityFilter/Identifier/@sap:emSelectionFieldProperty}"/>
+							<core:CustomData key="collection" value="FreightOrderSourceLocCityFilterS"/>
+							<core:CustomData key="single" value="true"/>
+						</customData>
+					</StandardListItem>
+					<StandardListItem title="{/#FreightOrderDestLocCityFilter/Identifier/@sap:label}"
+						tooltip="{/#FreightOrderDestLocCityFilter/Identifier/@sap:label}" type="Navigation" press="onFilterCategoryPress">
+						<customData>
+							<core:CustomData key="id" value="{/#FreightOrderDestLocCityFilter/Identifier/@sap:emSelectionFieldProperty}"/>
+							<core:CustomData key="collection" value="FreightOrderDestLocCityFilterS"/>
+							<core:CustomData key="single" value="true"/>
+						</customData>
+					</StandardListItem>
+					<StandardListItem title="{/#FreightOrderEventLocCountryFlt/Identifier/@sap:label}"
+						tooltip="{/#FreightOrderEventLocCountryFlt/Identifier/@sap:label}" type="Navigation" press="onFilterCategoryPress">
+						<customData>
+							<core:CustomData key="id" value="{/#FreightOrderEventLocCountryFlt/Identifier/@sap:emSelectionFieldProperty}"/>
+							<core:CustomData key="collection" value="FreightOrderEventLocCountryFltS"/>
+							<core:CustomData key="single" value="true"/>
+						</customData>
+					</StandardListItem>
+					<StandardListItem title="{/#FreightOrderSourceLocCountryFlt/Identifier/@sap:label}"
+						tooltip="{/#FreightOrderSourceLocCountryFlt/Identifier/@sap:label}" type="Navigation" press="onFilterCategoryPress">
+						<customData>
+							<core:CustomData key="id" value="{/#FreightOrderSourceLocCountryFlt/Identifier/@sap:emSelectionFieldProperty}"/>
+							<core:CustomData key="collection" value="FreightOrderSourceLocCountryFltS"/>
+							<core:CustomData key="single" value="true"/>
+						</customData>
+					</StandardListItem>
+					<StandardListItem title="{/#FreightOrderSourceLocationFilter/Identifier/@sap:label}"
+						tooltip="{/#FreightOrderSourceLocationFilter/Identifier/@sap:label}" type="Navigation" press="onFilterCategoryPress">
+						<customData>
+							<core:CustomData key="id" value="{/#FreightOrderSourceLocationFilter/Identifier/@sap:emSelectionFieldProperty}"/>
+							<core:CustomData key="collection" value="FreightOrderSourceLocationFilterS"/>
+							<core:CustomData key="single" value="true"/>
+						</customData>
+					</StandardListItem>
+				</items>
+			</List>
+		</content>
+		<beginButton>
+			<Button text="{i18n>FILTER_CATEGORY_APPLY}" press="onFilterCategoryDialogOKButton"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>FILTER_CANCEL}" press="onCategoryDialogCancelButtonPress"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

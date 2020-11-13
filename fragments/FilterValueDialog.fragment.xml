@@ -1,0 +1,35 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog class="sapUiPopupWithPadding" contentWidth="30%" contentHeight="40%">
+		<customHeader>
+			<Bar>
+				<contentMiddle>
+					<Text text="{i18n>FILTER_VALUE_TITLE}"/>
+				</contentMiddle>
+				<contentRight>
+					<Button icon="sap-icon://refresh" press="onValueDialogRefreshPress" tooltip="{i18n>FILTER_REFRESH_TOOLTIP}"/>
+				</contentRight>
+			</Bar>
+		</customHeader>
+		<subHeader>
+			<Bar>
+				<contentMiddle>
+					<SearchField placeholder="{i18n>FILTER_VALUE_SEARCH_PLACEHOLDER}" width="100%" search="onValueDialogSearch"
+						showRefreshButton="{device>/isNoTouch}"/>
+				</contentMiddle>
+			</Bar>
+		</subHeader>
+		<content>
+			<List growing="true" growingThreshold="20" growingScrollToLoad="true" updateFinished="onFilterValueListUpdateFinished">
+				<InputListItem label="{Description}" tooltip="{Description}"/>
+			</List>
+		</content>
+		<buttons>
+			<ToggleButton text="{i18n>FILTER_VALUE_SELECTED}" press="onShowSelectedCheck" enabled="false"/>
+			<Button text="{i18n>FILTER_VALUE_OK}" press="onValueDialogOKButtonPress"/>
+			<Button text="{i18n>FILTER_CANCEL}" press="onDialogCancelButtonPress"/>
+		</buttons>
+		<customData>
+			<core:CustomData key="SelectionFieldProperty" value=""/>
+		</customData>
+	</Dialog>
+</core:FragmentDefinition>

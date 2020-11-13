@@ -1,0 +1,59 @@
+{
+  "welcomeFile": "index.html",
+  "routes": [
+    {
+      "path": "/sap/opu/odata/saptrx/EM_SRV",
+      "target": {
+        "type": "destination",
+        "name": "T95CLNT100",
+        "entryPath": "/sap/opu/odata/saptrx/EM_SRV"
+      },
+      "description": "T95CLNT100"
+    },
+    {
+      "path": "/sap/opu/odata/sap/ZTM_MAP_SRV",
+      "target": {
+        "type": "destination",
+        "name": "S4A",
+        "entryPath": "/sap/opu/odata/sap/ZTM_MAP_SRV"
+      },
+      "description": "S4A"
+    },
+    {
+      "path": "/sap/bc/ui5_ui5",
+      "target": {
+        "type": "destination",
+        "name": "S4A",
+        "entryPath": "/sap/bc/ui5_ui5"
+      },
+      "description": "S4A"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "T95CLNT100",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "T95CLNT100"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+<form:SimpleForm xmlns="sap.m" xmlns:form="sap.ui.layout.form" maxContainerCols="2" layout="ResponsiveGridLayout" labelSpanS="5"
+	labelSpanL="5" labelSpanM="5">
+	<Label text="{/#FreightOrderEventHandlerDetails/ShippingType/@sap:label}"></Label>
+	<Text text="{ShippingType}"/>
+	<Label text="{/#FreightOrderEventHandlerDetails/PlannedExecutionStartDateTime/@sap:label}"></Label>
+	<Text
+		text="{ parts: [ { path: 'PlannedExecutionStartDateTime' }, { path: 'PlannedExecutionStartTimeZone' } ], formatter:'.formatter.DateTimeDialogFormatter' }"/>
+	<Label text="{/#FreightOrderEventHandlerDetails/TransportationStatus/@sap:label}"></Label>
+	<Text text="{TransportationStatus}"/>
+	<Label text="{/#FreightOrderEventHandlerDetails/BlockStatus/@sap:label}"></Label>
+	<Text text="{BlockStatus}"/>
+	<Label text="{/#FreightOrderEventHandlerDetails/NextStopAddress/@sap:label}"></Label>
+	<Text text="{NextStopAddress}"/>
+	<Label text="{/#FreightOrderEventHandlerDetails/PlannedExecutionEndDateTime/@sap:label}"></Label>
+	<Text text="{PlannedExecutionEndDateTime} {PlannedExecutionEndTimeZone}"/>
+	<Label text="{/#FreightOrderEventHandlerDetails/VehicleRegistrationNumber/@sap:label}"></Label>
+	<Text text="{VehicleRegistrationNumber}"/>
+</form:SimpleForm>

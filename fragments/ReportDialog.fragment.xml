@@ -1,0 +1,58 @@
+<Dialog title="{i18n>UEM_REP_EXP_DIALOG_TITLE}" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified"
+	afterClose="onDialogAfterClose" contentWidth="40%">
+	<content>
+		<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" select="onSign">
+			<items>
+				<IconTabFilter id="iconTabBarFilter1" icon="sap-icon://hint" tooltip="{i18n>detailIconTabBarInfo}">
+					<form:SimpleForm xmlns:form="sap.ui.layout.form" maxContainerCols="2" editable="true">
+						<Label text="{/#FreightOrderEventMessageOverview/EventCodeName/@sap:label}"/>
+						<Text text="{EventCodeName}"/>
+						<Label text="{/#FreightOrderEventMessageOverview/EventLocation/@sap:label}"/>
+						<Input width="90%" change="fnExpectedLocation" value="{EventLocation}"></Input>
+						<Label text="{/#FreightOrderEventMessageOverview/EventExpectedDateTime/@sap:label}"/>
+						<Text
+							text="{ parts: [ { path:'EventExpectedDateTime' }, { path:'EventExpectedTimeZone'} ], formatter:'.formatter.DateTimeDialogFormatter' }"/>
+						<Label text="{/#FreightOrderEventMessageOverview/EventDateTime/@sap:label}"/>
+						<DateTimeInput type="DateTime" change="fnReportTime" width="90%"/>
+						<Label text="{/#FreightOrderEventMessageOverview/EventTimeZone/@sap:label}"/>
+						<ComboBox placeholder="{i18n>UEM_EVT_TIMEZONE_PLACEHOLDER}" change="fnOnTimeZoneExpectedChange" items="{/TimeZonesS}"
+							selectedKey="{EventExpectedTimeZone}" width="90%">
+							<items>
+								<core:Item key="{TimeZone}" text="{ parts: [ { path:'TimeZoneDescription' }, { path:'TimeZone'} ], formatter:'.formatter.ObjectFormatter' }"/>
+							</items>
+						</ComboBox>
+						<Label text="Latitude" width="100%"></Label>
+						<Text text="" id="txtLatitude"/>
+						<Label text="Longitude" width="100%"></Label>
+						<Text text="" id="txtLongitude"></Text>
+					</form:SimpleForm>
+				</IconTabFilter>
+				<IconTabFilter id="iconTabBarFilter2" icon="sap-icon://write-new" tooltip="{i18n>detailIconTabBarInfo}"
+					visible="{ path:'EventCode', formatter:'.formatTabVisibility' }">
+					<VBox>
+						<HBox>
+							<Button id="Save" text="Save Signature" press="saveButton"></Button>
+							<Button id="clear" text="Clear Signature" press="clearButton"></Button>
+						</HBox>
+					</VBox>
+					<VBox>
+						<core:HTML id="html"></core:HTML>
+					</VBox>
+				</IconTabFilter>
+				<IconTabFilter id="iconTabBarFilter4" icon="sap-icon://add-photo" tooltip="{Take picture}">
+					<VBox class="marginBoxContent">
+						<u:FileUploader id="fileUploader" name="myFileUpload" placeholder="Take a Picture or Choose a file" width="50%"
+							tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+						<Button text="Upload File" press="handleUploadPress" width="111px" type="Emphasized"/>
+					</VBox>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+	</content>
+	<beginButton>
+		<Button id="okSignButton" text="{i18n>UEM_ADD_BTN}" press="fnOnPopupOK" enabled="true" visible="true"/>
+	</beginButton>
+	<endButton>
+		<Button text="{i18n>UEM_CLOSE_BTN}" press="fnOnReportPopupClose"/>
+	</endButton>
+</Dialog>

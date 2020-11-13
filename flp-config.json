@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "ZNOVIGO_SM_S4A",
+        "description": "Smart Track",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#ZNOVIGO_SM_S4A-Display",
+        "navigationComponentName": "SmartTrack",
+        "intentSemanticObject": "ZNOVIGO_SM_S4A",
+        "intentAction": "Display",
+        "html5ApplicationName": "znovigosms4a",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "4530ae65-ad3d-4fe0-b27c-8b4dc2445067"
+        ],
+        "contentPackages": [
+            "d4ed2e89-3775-42d1-924c-6b41f08ba4bc"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "Smart Track",
+        "subtitle": "Track your orders",
+        "searchKeywords": "Smart Track,Track your orders",
+        "displayIconUrl": "sap-icon://bus-public-transport",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}
