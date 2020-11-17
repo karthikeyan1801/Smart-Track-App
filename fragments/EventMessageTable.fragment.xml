@@ -1,0 +1,57 @@
+<Table id="EventMessageTable" xmlns="sap.m" xmlns:core="sap.ui.core" mode="SingleSelectMaster" items="{ToEventMessageOverview}"
+	selectionChange="OnSelectionChange">
+	<headerToolbar>
+		<Toolbar>
+			<Label id="TableTitle" text="{i18n>EVENT_MESSAGE_TITLE}"></Label>
+			<ToolbarSpacer></ToolbarSpacer>
+			<Button id="NavToEVMBtn" icon="sap-icon://activity-items" press="goToNextPage" enabled="false" tooltip="{i18n>BUTTON_TOOLTIP_EVMDETAILS}"/>
+			<ToolbarSpacer width="1%"></ToolbarSpacer>
+			<Button icon="sap-icon://add" press="fnOnAddButtonPressed" tooltip="{i18n>BUTTON_TOOLTIP_ADD_DELAY}"/>
+		</Toolbar>
+	</headerToolbar>
+	<columns>
+		<Column demandPopin="true" popinDisplay="Inline" width="2.5em"></Column>
+		<Column demandPopin="true" popinDisplay="Inline">
+			<header>
+				<Text text="{/#FreightOrderEventMessageOverview/EventCodeName/@sap:label}"/>
+			</header>
+		</Column>
+		<Column demandPopin="true" popinDisplay="Inline">
+			<header>
+				<Text text="{/#FreightOrderEventMessageOverview/EventLocation/@sap:label}"/>
+			</header>
+		</Column>
+		<Column demandPopin="true" popinDisplay="Inline">
+			<header>
+				<Text text="{/#FreightOrderEventMessageOverview/EventReasonText/@sap:label}"/>
+			</header>
+		</Column>
+		<Column demandPopin="true" popinDisplay="Inline">
+			<header>
+				<Text text="{/#FreightOrderEventMessageOverview/EventExpectedDateTime/@sap:label}"/>
+			</header>
+		</Column>
+		<Column demandPopin="true" popinDisplay="Inline">
+			<header>
+				<Text text="{/#FreightOrderEventMessageOverview/EventDateTime/@sap:label}"/>
+			</header>
+		</Column>
+		<Column demandPopin="true" popinDisplay="Inline" width="3em"></Column>
+	</columns>
+	<items>
+		<ColumnListItem>
+			<cells>
+				<core:Icon src="{ parts: [{path:'EventStatusExtended'}], formatter:'.formatter.iconFormatter' }"
+					tooltip="{ parts: [{path:'EventStatusExtended'}], formatter: '.formatter.iconTooltipFormatter' }"/>
+				<Text text="{EventCodeName}"/>
+				<Text text="{EventLocation}"/>
+				<Text text="{EventReasonText}"/>
+				<Text
+					text="{ parts: [ { path: 'EventExpectedDateTime' }, { path: 'EventExpectedTimeZone' } ], formatter:'.formatter.DateTimeDialogFormatter' }"/>
+				<Text text="{EventDateTime} {EventTimeZone}"/>
+				<Button icon="sap-icon://edit" press="fnOnReportButtonPressed"
+					visible="{path:'EventStatusExtended', formatter:'.formatter.reportEventFormatter'}" enabled="true" tooltip="{i18n>BUTTON_TOOLTIP_REPORT}"/>
+			</cells>
+		</ColumnListItem>
+	</items>
+</Table>

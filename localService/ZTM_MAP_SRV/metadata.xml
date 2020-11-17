@@ -1,0 +1,55 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZTM_MAP_SRV" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="Stage" sap:content-version="1">
+				<Key><PropertyRef Name="StageKey"/></Key><Property Name="StageKey" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="NodeID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LocGeoData" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="LOC_GEO_DATA" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="IniGeoData" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="INI_GEO_DATA" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="Stop" sap:content-version="1">
+				<Key><PropertyRef Name="StopUuid"/></Key><Property Name="StopUuid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="NodeID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LocGeoData" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Source Location Geo Data (Long;Lat;Alt)"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="StopId" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Stop" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LocId" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Location" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LocName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LocDescr" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Location Desc."
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LocCountryCode" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Name" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LocRegion" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Description"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LocCityName" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="City" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LocStreetPostalCode" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Postal Code"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LocStreetName" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Street"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LocFormatted" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="LOC_FORMATTED" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LocTimeZone" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Time Zone"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ReqStartDt" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time Stamp"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="ReqEndDt" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time Stamp"
+					sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<EntityType Name="FreightOrderID" sap:content-version="1">
+				<Key><PropertyRef Name="TorId"/></Key><Property Name="TorUuid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="NodeID" sap:creatable="false" sap:updatable="false"
+					sap:sortable="false" sap:filterable="false"/><Property Name="TorId" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="Document" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="Stage1Set" Relationship="ZTM_MAP_SRV.FreightOrderIdToStage1" FromRole="FromRole_FreightOrderIdToStage1"
+					ToRole="ToRole_FreightOrderIdToStage1"/><NavigationProperty Name="StageSet" Relationship="ZTM_MAP_SRV.FreightOrderIdToStage" FromRole="FromRole_FreightOrderIdToStage"
+					ToRole="ToRole_FreightOrderIdToStage"/><NavigationProperty Name="StopSet" Relationship="ZTM_MAP_SRV.FreightOrderidToStops" FromRole="FromRole_FreightOrderidToStops"
+					ToRole="ToRole_FreightOrderidToStops"/></EntityType>
+			<EntityType Name="Stage1" sap:content-version="1">
+				<Key><PropertyRef Name="StageKey"/></Key><Property Name="StageKey" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="NodeID" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="LocGeoData" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="LOC_GEO_DATA" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/><Property Name="IniGeoData" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="INI_GEO_DATA" sap:creatable="false"
+					sap:updatable="false" sap:sortable="false" sap:filterable="false"/></EntityType>
+			<Association Name="FreightOrderidToStops" sap:content-version="1"><End Type="ZTM_MAP_SRV.FreightOrderID" Multiplicity="1" Role="FromRole_FreightOrderidToStops"/><End Type="ZTM_MAP_SRV.Stop" Multiplicity="*" Role="ToRole_FreightOrderidToStops"/></Association>
+			<Association Name="FreightOrderIdToStage1" sap:content-version="1"><End Type="ZTM_MAP_SRV.FreightOrderID" Multiplicity="1" Role="FromRole_FreightOrderIdToStage1"/><End Type="ZTM_MAP_SRV.Stage1" Multiplicity="*" Role="ToRole_FreightOrderIdToStage1"/></Association>
+			<Association Name="FreightOrderIdToStage" sap:content-version="1"><End Type="ZTM_MAP_SRV.FreightOrderID" Multiplicity="1" Role="FromRole_FreightOrderIdToStage"/><End Type="ZTM_MAP_SRV.Stage" Multiplicity="*" Role="ToRole_FreightOrderIdToStage"/></Association>
+			<EntityContainer Name="ZTM_MAP_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx"><EntitySet Name="StageSet" EntityType="ZTM_MAP_SRV.Stage" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="StopSet" EntityType="ZTM_MAP_SRV.Stop" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/><EntitySet Name="FreightOrderIDSet" EntityType="ZTM_MAP_SRV.FreightOrderID" sap:creatable="false" sap:updatable="false"
+				sap:deletable="false" sap:pageable="false" sap:content-version="1"/><EntitySet Name="StageSet1" EntityType="ZTM_MAP_SRV.Stage1" sap:creatable="false" sap:updatable="false" sap:deletable="false"
+				sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="FreightOrderidToStopsSet" Association="ZTM_MAP_SRV.FreightOrderidToStops" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="FreightOrderIDSet" Role="FromRole_FreightOrderidToStops"/><End EntitySet="StopSet" Role="ToRole_FreightOrderidToStops"/></AssociationSet>
+				<AssociationSet Name="FreightOrderIdToStageSet" Association="ZTM_MAP_SRV.FreightOrderIdToStage" sap:creatable="false" sap:updatable="false"
+					sap:deletable="false" sap:content-version="1"><End EntitySet="FreightOrderIDSet" Role="FromRole_FreightOrderIdToStage"/><End EntitySet="StageSet" Role="ToRole_FreightOrderIdToStage"/></AssociationSet>
+				<AssociationSet Name="FreightOrderIdToStageSet1" Association="ZTM_MAP_SRV.FreightOrderIdToStage1" sap:creatable="false"
+					sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="FreightOrderIDSet" Role="FromRole_FreightOrderIdToStage1"/><End EntitySet="StageSet1" Role="ToRole_FreightOrderIdToStage1"/></AssociationSet>
+			</EntityContainer><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="http://nov:443/sap/opu/odata/sap/ZTM_MAP_SRV/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="http://nov:443/sap/opu/odata/sap/ZTM_MAP_SRV/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

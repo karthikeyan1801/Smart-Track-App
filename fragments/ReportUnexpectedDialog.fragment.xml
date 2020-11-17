@@ -1,0 +1,191 @@
+<Dialog title="{i18n>UEM_EXP_DIALOG_TITLE}" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" contentWidth="30%"
+	afterClose="onDialogAfterClose">
+	<content>
+		<form:SimpleForm xmlns:form="sap.ui.layout.form" maxContainerCols="2" editable="true">
+			<Label text="{i18n>UEM_EVTCODE_LBL}" required="true"></Label>
+			<ComboBox selectionChange="fnOnEventCodeChange" width="90%">
+				<items>
+					<!--<core:Item key="CANCEL" text="Cancel (CANCEL)"/>-->
+					<core:Item key="CLEANING" text="Cleaning - unexpected (CLEANING)"/>
+					<core:Item key="DAMAGE" text="Damage (DAMAGE)"/>
+					<core:Item key="DELAYED" text="Delay (DELAYED)"/>
+					<core:Item key="TRUCK_BREAKDOWN" text="Truck Breakdown (TRUCK_BREAKDOWN)"/>
+					<core:Item key="TRAFFIC_JAM" text="Traffic Jam (TRAFFIC_JAM)"/>
+					<core:Item key="CUST_LOC_CLOSED" text="Customer Location closed (CUST_LOC_CLOSED)"/>
+				</items>
+			</ComboBox>
+		</form:SimpleForm>
+		<layout:VerticalLayout class="marginVerticalContent" width="100%"></layout:VerticalLayout>
+	</content>
+	<dependents>
+		<!--		<form:SimpleForm xmlns:form="sap.ui.layout.form" maxContainerCols="2" editable="true">
+			<form:title>
+				<core:Title text="Cancel (CANCEL)"/>
+			</form:title>
+			<form:content>
+				<Label text="{i18n>UEM_EVT_DATETIME_LBL}" required="true"></Label>
+				<DateTimeInput type="DateTime" change="fnActualDate" width="90%">
+					<customData>
+						<core:CustomData key="Property" value=""/>
+					</customData>
+				</DateTimeInput>
+				<Label text="{i18n>UEM_EVT_TIMEZONE_LBL}" required="true"></Label>
+				<ComboBox placeholder="{i18n>UEM_EVT_TIMEZONE_PLACEHOLDER}" change="fnOnTimeZoneChange" items="{/TimeZonesS}" width="90%">
+					<items>
+						<core:Item key="{TimeZone}" text="{ parts: [ { path:'TimeZoneDescription' }, { path:'TimeZone'} ], formatter:'.formatter.ObjectFormatter' }"/>
+					</items>
+				</ComboBox>
+				<Label text="latitude" width="100%"></Label>
+				<Text text="" id="txtLatitude1"/>
+				<Label text="longitude" width="100%"></Label>
+				<Text text="" id="txtLongitude1"></Text>
+			</form:content>
+		</form:SimpleForm>-->
+		<form:SimpleForm xmlns:form="sap.ui.layout.form" maxContainerCols="2" editable="true">
+			<form:title>
+				<core:Title text="Cleaning - unexpected (CLEANING)"/>
+			</form:title>
+			<form:content>
+				<Label text="{i18n>UEM_EVT_DATETIME_LBL}" required="true"></Label>
+				<DateTimeInput type="DateTime" change="fnActualDate" width="90%">
+					<customData>
+						<core:CustomData key="Property" value=""/>
+					</customData>
+				</DateTimeInput>
+				<Label text="{i18n>UEM_EVT_TIMEZONE_LBL}" required="true"></Label>
+				<ComboBox placeholder="{i18n>UEM_EVT_TIMEZONE_PLACEHOLDER}" change="fnOnTimeZoneChange" items="{/TimeZonesS}" width="90%">
+					<items>
+						<core:Item key="{TimeZone}" text="{ parts: [ { path:'TimeZoneDescription' }, { path:'TimeZone'} ], formatter:'.formatter.ObjectFormatter' }"/>
+					</items>
+				</ComboBox>
+				<Label text="latitude" width="100%"></Label>
+				<Text text="" id="txtLatitude"/>
+				<Label text="longitude" width="100%"></Label>
+				<Text text="" id="txtLongitude"></Text>
+			</form:content>
+		</form:SimpleForm>
+		<form:SimpleForm xmlns:form="sap.ui.layout.form" maxContainerCols="2" editable="true">
+			<form:title>
+				<core:Title text="Damage (DAMAGE)"/>
+			</form:title>
+			<form:content>
+				<Label text="{i18n>UEM_EVT_DATETIME_LBL}" required="true"></Label>
+				<DateTimeInput type="DateTime" change="fnActualDate" width="90%">
+					<customData>
+						<core:CustomData key="Property" value=""/>
+					</customData>
+				</DateTimeInput>
+				<Label text="{i18n>UEM_EVT_TIMEZONE_LBL}" required="true"></Label>
+				<ComboBox placeholder="{i18n>UEM_EVT_TIMEZONE_PLACEHOLDER}" change="fnOnTimeZoneChange" items="{/TimeZonesS}" width="90%">
+					<items>
+						<core:Item key="{TimeZone}" text="{ parts: [ { path:'TimeZoneDescription' }, { path:'TimeZone'} ], formatter:'.formatter.ObjectFormatter' }"/>
+					</items>
+				</ComboBox>
+				<Label text="latitude" width="100%"></Label>
+				<Text text="" id="txtLatitude2"/>
+				<Label text="longitude" width="100%"></Label>
+				<Text text="" id="txtLongitude2"></Text>
+			</form:content>
+		</form:SimpleForm>
+		<form:SimpleForm xmlns:form="sap.ui.layout.form" maxContainerCols="2" editable="true">
+			<form:title>
+				<core:Title text="Delay (DELAYED)"/>
+			</form:title>
+			<form:content>
+				<Label text="{i18n>UEM_EVT_DATETIME_LBL}" required="true"></Label>
+				<DateTimeInput type="DateTime" change="fnActualDate" width="90%">
+					<customData>
+						<core:CustomData key="Property" value=""/>
+					</customData>
+				</DateTimeInput>
+				<Label text="{i18n>UEM_EVT_TIMEZONE_LBL}" required="true"></Label>
+				<ComboBox placeholder="{i18n>UEM_EVT_TIMEZONE_PLACEHOLDER}" change="fnOnTimeZoneChange" items="{/TimeZonesS}" width="90%">
+					<items>
+						<core:Item key="{TimeZone}" text="{ parts: [ { path:'TimeZoneDescription' }, { path:'TimeZone'} ], formatter:'.formatter.ObjectFormatter' }"/>
+					</items>
+				</ComboBox>
+				<Label required="" text="{i18n>UEM_REASON_LBL}"/>
+				<Input liveChange="fnOnProperty" width="90%">
+					<customData>
+						<core:CustomData key="Property" value="EventReasonText"/>
+					</customData>
+				</Input>
+				<Label text="latitude" width="100%"></Label>
+				<Text text="" id="txtLatitude3"/>
+				<Label text="longitude" width="100%"></Label>
+				<Text text="" id="txtLongitude3"></Text>
+			</form:content>
+		</form:SimpleForm>
+		<form:SimpleForm xmlns:form="sap.ui.layout.form" maxContainerCols="2" editable="true">
+			<form:title>
+				<core:Title text="Truck Breakdown (TRUCK_BREAKDOWN)"/>
+			</form:title>
+			<form:content>
+				<Label text="{i18n>UEM_EVT_DATETIME_LBL}" required="true"></Label>
+				<DateTimeInput type="DateTime" change="fnActualDate" width="90%">
+					<customData>
+						<core:CustomData key="Property" value=""/>
+					</customData>
+				</DateTimeInput>
+				<Label text="{i18n>UEM_EVT_TIMEZONE_LBL}" required="true"></Label>
+				<ComboBox placeholder="{i18n>UEM_EVT_TIMEZONE_PLACEHOLDER}" change="fnOnTimeZoneChange" items="{/TimeZonesS}" width="90%">
+					<items>
+						<core:Item key="{TimeZone}" text="{ parts: [ { path:'TimeZoneDescription' }, { path:'TimeZone'} ], formatter:'.formatter.ObjectFormatter' }"/>
+					</items>
+				</ComboBox>
+				<Label text="latitude" width="100%"></Label>
+				<Text text="" id="txtLatitude4"/>
+				<Label text="longitude" width="100%"></Label>
+				<Text text="" id="txtLongitude4"></Text>
+			</form:content>
+		</form:SimpleForm>
+		<form:SimpleForm xmlns:form="sap.ui.layout.form" maxContainerCols="2" editable="true">
+			<form:title>
+				<core:Title text="Traffic Jam (TRAFFIC_JAM)"/>
+			</form:title>
+			<form:content>
+				<Label text="{i18n>UEM_EVT_DATETIME_LBL}" required="true"></Label>
+				<DateTimeInput type="DateTime" change="fnActualDate" width="90%">
+					<customData>
+						<core:CustomData key="Property" value=""/>
+					</customData>
+				</DateTimeInput>
+				<Label text="{i18n>UEM_EVT_TIMEZONE_LBL}" required="true"></Label>
+				<ComboBox placeholder="{i18n>UEM_EVT_TIMEZONE_PLACEHOLDER}" change="fnOnTimeZoneChange" items="{/TimeZonesS}" width="90%">
+					<items>
+						<core:Item key="{TimeZone}" text="{ parts: [ { path:'TimeZoneDescription' }, { path:'TimeZone'} ], formatter:'.formatter.ObjectFormatter' }"/>
+					</items>
+				</ComboBox>
+				<Label text="latitude" width="100%"></Label>
+				<Text text="" id="txtLatitude5"/>
+				<Label text="longitude" width="100%"></Label>
+				<Text text="" id="txtLongitude5"></Text>
+			</form:content>
+		</form:SimpleForm>
+		<form:SimpleForm xmlns:form="sap.ui.layout.form" maxContainerCols="2" editable="true">
+			<form:title>
+				<core:Title text="Customer Location closed (CUST_LOC_CLOSED)"/>
+			</form:title>
+			<form:content>
+				<Label text="{i18n>UEM_EVT_DATETIME_LBL}" required="true"></Label>
+				<DateTimeInput type="DateTime" change="fnActualDate" width="90%">
+					<customData>
+						<core:CustomData key="Property" value=""/>
+					</customData>
+				</DateTimeInput>
+				<Label text="{i18n>UEM_EVT_TIMEZONE_LBL}" required="true"></Label>
+				<ComboBox placeholder="{i18n>UEM_EVT_TIMEZONE_PLACEHOLDER}" change="fnOnTimeZoneChange" items="{/TimeZonesS}" width="90%">
+					<items>
+						<core:Item key="{TimeZone}" text="{ parts: [ { path:'TimeZoneDescription' }, { path:'TimeZone'} ], formatter:'.formatter.ObjectFormatter' }"/>
+					</items>
+				</ComboBox>
+			</form:content>
+		</form:SimpleForm>
+	</dependents>
+	<beginButton>
+		<Button id="idButtonunexpected" text="{i18n>UEM_ADD_BTN}" press="fnReportOK" enabled="false" visible="true"/>
+	</beginButton>
+	<endButton>
+		<Button text="{i18n>UEM_CLOSE_BTN}" press="fnOnDelayPopupClose"/>
+	</endButton>
+</Dialog>

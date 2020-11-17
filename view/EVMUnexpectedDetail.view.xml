@@ -1,0 +1,28 @@
+<mvc:View controllerName="SmartTrack.view.EVMUnexpectedDetail" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
+	<Page id="evmUnexpectedDetailsPage" title="{i18n>EVM_DETAIL_TITLE}" class="sapUiFioriObjectPage" showNavButton="true"
+		navButtonPress="handleNavButtonPress">
+		<content>
+			<ObjectHeader id="evmUnexpectedDetailHeader"
+				title="{ parts: [ {path : 'EventCodeName'}, {path : 'EventCode'} ], formatter: '.formatter.ObjectFormatter' }"
+				number="{ExpectedEventDelayInHours}"
+				numberState="{ path:'ExpectedEventDelayVS', formatter:'sap.SmartTrack.util.formatter.valueStateFormatter' }">
+				<attributes></attributes>
+				<statuses>
+					<ObjectStatus text="{EventStatusExtended}"
+						state="{ path:'ExpectedEventDelayVS', formatter:'sap.SmartTrack.util.formatter.valueStateFormatter' }"></ObjectStatus>
+				</statuses>
+			</ObjectHeader>
+			<VBox id="evmUnexpectedDetailContainer"></VBox>
+		</content>
+		<dependents>
+			<form:SimpleForm maxContainerCols="2" id="evmUnexpectedForm">
+				<Label text="{/#FreightOrderEventMessageDetails/EventCodeName/@sap:label}"></Label>
+				<Text text="{EventCodeName}"/>
+			</form:SimpleForm>
+		</dependents>
+		<footer>
+			<Bar></Bar>
+		</footer>
+	</Page>
+</mvc:View>

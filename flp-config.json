@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "SmartTrack.novigo_smarttrackS4",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#novigo_smarttrackS4-Display",
+        "navigationComponentName": "SmartTrack",
+        "intentSemanticObject": "novigo_smarttrackS4",
+        "intentAction": "Display",
+        "html5ApplicationName": "novigosmarttracks4",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "e84af57c-59ab-44ea-ba3c-e4a9cd6427d0"
+        ],
+        "contentPackages": [
+            "e8f78681-4565-43fe-8f9a-ea66e2cefc0f"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "DynamicTile",
+        "title": "Smart Track App",
+        "subtitle": "S4",
+        "searchKeywords": "Smart Track App,S4",
+        "displayIconUrl": "sap-icon://approvals",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "/sap/fiori/novigosmarttracks4/sap/opu/odata/saptrx/EM_SRV/FreightOrderDeliveryStatusFilterS/$count",
+        "refreshInterval": 10,
+        "displayNumberUnit": "Delivered"
+    }
+}

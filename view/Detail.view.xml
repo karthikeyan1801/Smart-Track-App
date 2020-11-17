@@ -1,0 +1,150 @@
+<mvc:View xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:vbm="sap.ui.vbm" controllerName="SmartTrack.view.Detail">
+	<Page title="{i18n>DETAIL_TITLE}" class="sapUiFioriObjectPage" showNavButton="{device>/isPhone}" navButtonPress="handleNavButton">
+		<core:Fragment fragmentName="SmartTrack.fragments.DetailObjectHeader" type="XML"/>
+		<IconTabBar id="EventHandlerIconTabBar" expanded="{device>/isNoPhone}" select="fnOnSelectIconTabFilter">
+			<items>
+				<IconTabFilter key="iconTabBarFilter5" icon="sap-icon://bar-code" text="Scan QR code" tooltip="{i18n>detailIconTabBarInfo}">
+					<form:SimpleForm layout="ResponsiveGridLayout" editable="true" labelSpanL="3" labelSpanM="3" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1">
+						<Label text="QR Code value"/>
+						<Input id="scannedValue" placeholder="{= ${device>/barcodeScanEnabled} ? 'Use scan button to enter barcode' : 'Enter Code manually' }" editable="{= !${device>/barcodeScanEnabled} }"/>
+						<Button icon="sap-icon://bar-code" text="Scan" tooltip="QR Code value" visible="{device>/barcodeScanEnabled}" press="onScanForValue">
+							<layoutData>
+								<l:GridData span="L2 M2"/>
+							</layoutData>
+						</Button>
+					</form:SimpleForm>
+				</IconTabFilter>
+				
+				<IconTabFilter key="iconTabBarFilter9" icon="sap-icon://generate-shortcut" text="Generate QRcode" tooltip="{i18n>detailIconTabBarInfo}">
+					<form:SimpleForm layout="ResponsiveGridLayout" editable="true" labelSpanL="3" labelSpanM="3" emptySpanL="3" emptySpanM="3" columnsL="1" columnsM="1">
+						<Label text="Freight Order"/>
+						<Input id="FO" value="55" editable="false"/>
+						<Label text="Carrier"/>
+						<Input id="Carr" value="BNSF" editable="false"/>
+						<Label text="Plate Number"/>
+						<Input id="PN" value="KA123" editable="false"/>
+						<Button type="Accept" icon="sap-icon://generate-shortcut" press="handleGenerateQRCode"/>
+					</form:SimpleForm>
+				</IconTabFilter>
+				<IconTabFilter key="iconTabBarFilter1" icon="sap-icon://map-2" text="Route" tooltip="Route">
+					<Link id="maplink" text="Track in Google Maps" target="_blank" href=""/>
+					<vbm:GeoMap id="GeoMap" legendVisible="true" scaleVisible="true" width="100%" height="600px" centerPosition="0;0" initialZoom="11" zoomlevel="3" enableAnimation="false" refMapLayerStack="Default" disableZoom="false" disablePan="false" contextMenu="onContextMenu">
+						<vbm:resources/>
+						<vbm:legend/>
+						<vbm:vos>
+							<vbm:Spots items="{path: 'oStopSet>/results'}">
+								<vbm:Spot type="Error" position="{oStopSet>LocGeoData}" tooltip="{oStopSet>LocDescr}"/>
+							</vbm:Spots>
+							<vbm:Spots>
+								<vbm:Spot id="currLoc" position="" tooltip="Current Location"/>
+							</vbm:Spots>
+							<vbm:Circles>
+								<vbm:items/>
+							</vbm:Circles>
+							<vbm:Routes items="{path: 'oStageSet>/results'}">
+								<vbm:Route position="{oStageSet>LocGeoData}" color="rgb(117,148,34)" colorBorder="rgb(255,255,255)" linewidth="3" click="onClickRoute" end="1" start="0" contextMenu="onContextMenuRoute"/>
+							</vbm:Routes>
+						</vbm:vos>
+					</vbm:GeoMap>
+				</IconTabFilter>
+				<IconTabFilter key="EventHandlerDetails" icon="sap-icon://hint" text="{i18n>EHD_TITLE}" tooltip="{i18n>ICONTABFILTER_TOOLTIP_EHDETAILS}"/>
+				<IconTabFilter xmlns="sap.m" key="FreightOrderAssignedFreightUnitsS" icon="sap-icon://database" text="Assigned Freight Units" tooltip="Assigned Freight Units">
+					<form:SimpleForm maxContainerCols="1">
+						<Table mode="None">
+							<columns>
+								<Column demandPopin="true" popinDisplay="Inline">
+									<header>
+										<Text text="{/#FreightOrderAssignedFreightUnits/FreightUnit/@sap:label}"/>
+									</header>
+								</Column>
+								<Column demandPopin="true" popinDisplay="Inline">
+									<header>
+										<Text text="{/#FreightOrderAssignedFreightUnits/TransportationRequest/@sap:label}"/>
+									</header>
+								</Column>
+								<Column demandPopin="true" popinDisplay="Inline">
+									<header>
+										<Text text="{/#FreightOrderAssignedFreightUnits/ShipperName/@sap:label}"/>
+									</header>
+								</Column>
+								<Column demandPopin="true" popinDisplay="Inline">
+									<header>
+										<Text text="{/#FreightOrderAssignedFreightUnits/ConsigneeAddress/@sap:label}"/>
+									</header>
+								</Column>
+								<Column demandPopin="true" popinDisplay="Inline">
+									<header>
+										<Text text="{/#FreightOrderAssignedFreightUnits/Loading_Loc/@sap:label}"/>
+									</header>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{FreightUnit}"/>
+										<Text text="{TransportationRequest}"/>
+										<Text text="{ShipperName}"/>
+										<Text text="{ConsigneeAddress}"/>
+										<Text text="{ parts: [ { path: 'Loading_Loc' }, { path: 'FreightUnitUnloadingLocation' } ], formatter:'.formatter.ObjectFormatter' }"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</form:SimpleForm>
+				</IconTabFilter>
+				<IconTabFilter xmlns="sap.m" key="FreightOrderRelatedSalesOrdersS" icon="sap-icon://sales-order" text="Related Sales Orders" tooltip="Related Sales Orders">
+					<form:SimpleForm maxContainerCols="1">
+						<Table mode="None">
+							<columns>
+								<Column demandPopin="true" popinDisplay="Inline">
+									<header>
+										<Text text="{/#FreightOrderRelatedSalesOrders/ConsigneeName/@sap:label}"/>
+									</header>
+								</Column>
+								<Column demandPopin="true" popinDisplay="Inline">
+									<header>
+										<Text text="{/#FreightOrderRelatedSalesOrders/SalesOrder/@sap:label}"/>
+									</header>
+								</Column>
+								<Column demandPopin="true" popinDisplay="Inline">
+									<header>
+										<Text text="{/#FreightOrderRelatedSalesOrders/Delivery/@sap:label}"/>
+									</header>
+								</Column>
+								<Column demandPopin="true" popinDisplay="Inline">
+									<header>
+										<Text text="{/#FreightOrderRelatedSalesOrders/PurchaseOrderByCustomer/@sap:label}"/>
+									</header>
+								</Column>
+								<Column demandPopin="true" popinDisplay="Inline">
+									<header>
+										<Text text="{/#FreightOrderRelatedSalesOrders/TransportationRequest/@sap:label}"/>
+									</header>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem>
+									<cells>
+										<Text text="{ConsigneeName}"/>
+										<Text text="{SalesOrder}"/>
+										<Text text="{Delivery}"/>
+										<Text text="{PurchaseOrderByCustomer}"/>
+										<Text text="{TransportationRequest}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</form:SimpleForm>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+		<core:Fragment fragmentName="SmartTrack.fragments.EventMessageTable" type="XML"/>
+		<!--		<footer>
+			<Bar>
+				<contentRight>
+					<Button icon="sap-icon://action" press="openActionSheet" id="actionButton"></Button>
+				</contentRight>
+			</Bar>
+		</footer>-->
+	</Page>
+</mvc:View>
