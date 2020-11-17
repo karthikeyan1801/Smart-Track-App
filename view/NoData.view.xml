@@ -1,0 +1,6 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="SmartTrack.view.NoData"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>NODATA_VIEW_TITLE}" showNavButton="{device>/isPhone}" navButtonPress="handleNavButton">
+		<content></content>
+	</Page>
+</core:View>

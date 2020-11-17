@@ -1,0 +1,13 @@
+<ObjectListItem type="{device>/listItemType}" xmlns="sap.m" xmlns:core="sap.ui.core"
+	title="{SourceLocationCityName} {i18n>CONJUNCTION} {DestinationLocationCityName}" number="{CurrentDelayInHours}" numberState="None"
+	press="handleSelect">
+	<attributes>
+		<ObjectAttribute text=" {TransportationOrder} "></ObjectAttribute>
+		<ObjectAttribute text="{ parts: [ {path : 'CarrierDescription'}, {path : 'Carrier'} ], formatter: '.formatter.ObjectFormatter' }"></ObjectAttribute>
+		<ObjectAttribute text=" {TransportationModeCategory} "></ObjectAttribute>
+	</attributes>
+	<firstStatus>
+		<ObjectStatus text="{DeliveryStatus}" state="{ path:'DeliveryStatusVS', formatter:'.formatter.valueStateFormatter' }"></ObjectStatus>
+	</firstStatus>
+	<secondStatus></secondStatus>
+</ObjectListItem>

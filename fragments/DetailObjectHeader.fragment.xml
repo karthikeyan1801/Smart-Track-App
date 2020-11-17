@@ -1,0 +1,11 @@
+<ObjectHeader id="detailHeader" xmlns="sap.m" title="{SourceLocationCityName} {i18n>CONJUNCTION} {DestinationLocationCityName}"
+	number="{CurrentDelayInHours}" numberState="None">
+	<attributes>
+		<ObjectAttribute text=" {TransportationOrder} "></ObjectAttribute>
+		<ObjectAttribute text="{ parts: [ {path : 'CarrierDescription'}, {path : 'Carrier'} ], formatter: '.formatter.ObjectFormatter' }"></ObjectAttribute>
+		<ObjectAttribute text=" {TransportationModeCategory} "></ObjectAttribute>
+	</attributes>
+	<statuses>
+		<ObjectStatus text="{DeliveryStatus}" state="{ path:'DeliveryStatusVS', formatter:'.formatter.valueStateFormatter' }"></ObjectStatus>
+	</statuses>
+</ObjectHeader>

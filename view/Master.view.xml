@@ -1,0 +1,35 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:shellfooter="sap.ushell.ui.footerbar"
+	controllerName="SmartTrack.view.Master">
+	<Page id="page" title="{i18n>MASTER_TITLE_NO_COUNT}">
+		<subHeader id="subHeader">
+			<Bar>
+				<contentMiddle >
+					<SearchField id="searchField" showRefreshButton="{device>/isNoTouch}" placeholder="{i18n>MASTER_SEARCH_PLACEHOLDER}" search="handleSearch"
+						tooltip="{i18n>MASTER_SEARCH_TOOLTIP}" width="100%"></SearchField>
+				</contentMiddle>
+				<contentRight>
+					<Button icon="sap-icon://bar-code" press="onScanForValue"  type="Emphasized"/>
+				</contentRight>
+			</Bar>
+		</subHeader>
+		<content id="content">
+			<List id="list" mode="{device>/listMode}" selectionChange="handleSelect" growing="true" growingScrollToLoad="true">
+				<infoToolbar>
+					<Toolbar id="listInfoToolbar" visible="false" active="true" press="onFilterButtonPress">
+						<Label/>
+					</Toolbar>
+				</infoToolbar>
+			</List>
+		</content>
+		<dependents>
+			<core:Fragment fragmentName="SmartTrack.fragments.FilterCategoryDialog" type="XML"/>
+		</dependents>
+		<footer id="footer">
+			<Bar>
+				<contentRight>
+					<Button icon="sap-icon://filter" press="onFilterButtonPress"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>
