@@ -1,0 +1,32 @@
+<mvc:View controllerName="SmartTrack.view.EVMExpectedDetail" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core">
+	<Page id="evmExpectedDetailsPage" title="{i18n>EVM_DETAIL_TITLE}" class="sapUiFioriObjectPage" showNavButton="true"
+		navButtonPress="handleNavButtonPress">
+		<content>
+			<ObjectHeader id="evmExpectedDetailHeader"
+				title="{ parts: [ {path : 'EventCodeName'}, {path : 'EventCode'} ], formatter: '.formatter.ObjectFormatter' }"
+				number="{ExpectedEventDelayInHours}"
+				numberState="{ path:'ExpectedEventDelayVS', formatter:'sap.SmartTrack.util.formatter.valueStateFormatter' }">
+				<attributes></attributes>
+				<statuses></statuses>
+			</ObjectHeader>
+			<VBox id="evmExpectedDetailContainer"></VBox>
+		</content>
+		<dependents>
+			<form:SimpleForm maxContainerCols="2" id="evmExpectedForm">
+				<Label text="{/#FreightOrderEventMessageDetails/EventCode/@sap:label}"></Label>
+				<Text text="{ parts: [ { path: 'EventCode' }, { path: 'EventCodeName' } ], formatter:'.formatter.MinusFormatter' }"/>
+				<Label text="{/#FreightOrderEventMessageDetails/EventLocation/@sap:label}"></Label>
+				<Text text="{ parts: [ { path: 'EventLocation' }, { path: 'EventLocationName' } ], formatter:'.formatter.ObjectFormatter' }"/>
+				<Label text="{/#FreightOrderEventMessageDetails/EventSenderName/@sap:label}"></Label>
+				<Text text="{EventSenderName} {EventSender}"/>
+				<Label text="{/#FreightOrderEventMessageDetails/EventExpectedDateTime/@sap:label}"></Label>
+				<Text
+					text="{ parts: [ { path: 'EventExpectedDateTime' }, { path: 'EventExpectedTimeZone' } ], formatter:'.formatter.DateTimeDialogFormatter' }"/>
+			</form:SimpleForm>
+		</dependents>
+		<footer>
+			<Bar></Bar>
+		</footer>
+	</Page>
+</mvc:View>

@@ -1,0 +1,198 @@
+{
+	"_version": "1.3.0",
+	"sap.app": {
+		"_version": "1.3.0",
+		"id": "${project.artifactId}",
+		"type": "application",
+		"resources": "resources.json",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{SmartTrack}}",
+		"description": "{{Smart_Track}}",
+		"applicationVersion": {
+			"version": "${project.version}"
+		},
+		"ach": "SAP",
+		"dataSources": {
+			"EM_SRV": {
+				"uri": "/sap/opu/odata/saptrx/EM_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/EM_SRV/metadata.xml"
+				}
+			},
+			"ZTM_MAP_SRV": {
+				"uri": "/sap/opu/odata/sap/ZTM_MAP_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/ZTM_MAP_SRV/metadata.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		}
+	},
+	"sap.fiori": {
+		"_version": "1.1.0",
+		"registrationIds": [],
+		"archeType": "transactional"
+	},
+	"sap.ui": {
+		"_version": "1.3.0",
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://detail-view",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": ["sap_hcb", "sap_bluecrystal"]
+	},
+	"sap.ui5": {
+		"_version": "1.2.0",
+		"rootView": {
+			"viewName": "SmartTrack.view.App",
+			"type": "XML",
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "${sap.ui5.dist.version}",
+			"libs": {
+				"sap.ui.core": {
+					"minVersion": "1.36.0"
+				},
+				"sap.m": {
+					"minVersion": "1.36.0"
+				},
+				"sap.ui.layout": {
+					"minVersion": "1.36.0"
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "SmartTrack.i18n.i18n"
+				}
+			},
+			"em_model": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"useBatch": true
+				},
+				"dataSource": "EM_SRV",
+				"preload": true
+			},
+			"s4aModel": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"useBatch": false
+				},
+				"dataSource": "ZTM_MAP_SRV",
+				"preload": false
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "SmartTrack.view",
+				"controlId": "fioriContent",
+				"controlAggregation": "detailPages",
+				"bypassed": {
+					"target": ["master"]
+				},
+				"async": true
+			},
+			"routes": [{
+				"pattern": "",
+				"name": "master",
+				"target": ["master", "noData"]
+			}, {
+				"pattern": "/",
+				"target": ["master", "noData"],
+				"name": "detail"
+			}, {
+				"pattern": "Detail/{contextPath}",
+				"name": "detail",
+				"target": ["master", "detail"]
+			}, {
+				"pattern": "EVMExpectedDetail/{contextPath}",
+				"target": ["master", "evmExpectedDetail"],
+				"name": "evmExpectedDetail"
+			}, {
+				"pattern": "EVMUnexpectedDetail/{contextPath}",
+				"target": ["master", "evmUnexpectedDetail"],
+				"name": "evmUnexpectedDetail"
+			}],
+			"targets": {
+				"master": {
+					"viewName": "Master",
+					"viewLevel": 1,
+					"viewId": "master",
+					"controlAggregation": "masterPages"
+				},
+				"detail": {
+					"viewName": "Detail",
+					"viewId": "detail",
+					"viewLevel": 2
+				},
+				"noData": {
+					"viewName": "NoData",
+					"viewId": "noData"
+				},
+				"evmExpectedDetail": {
+					"viewName": "EVMExpectedDetail",
+					"viewId": "evmExpectedDetail"
+				},
+				"evmUnexpectedDetail": {
+					"viewName": "EVMUnexpectedDetail",
+					"viewId": "evmUnexpectedDetail"
+				}
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}],
+			"js": [{
+				"uri": "util/quagga.min.js"
+			}]
+		},
+		"config": {
+			"resourceBundle": "i18n/i18n.properties",
+			"titleResource": "SHELL_TITLE",
+			"serviceConfig": {
+				"name": "EM_SRV",
+				"serviceUrl": "/sap/opu/odata/saptrx/EM_SRV/"
+			}
+		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/znovigo_sm_s4a",
+		"_version": "1.1.0"
+	},
+	"sap.platform.hcp": {
+		"uri": "",
+		"_version": "1.1.0"
+	}
+}
